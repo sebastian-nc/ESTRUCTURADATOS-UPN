@@ -34,6 +34,7 @@ namespace semana1
                 Console.Write("DATO A ELIMINAR (-1 FIN): ");
                 dato = Int32.Parse(Console.ReadLine());
                 lista.Eliminar(dato);
+                lista.Recorrido();
 
             } while (dato != -1);
             Console.ReadLine();
