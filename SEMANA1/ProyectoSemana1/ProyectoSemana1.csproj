@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{AB4D04AA-8128-4C7C-BA13-E8F763A26CDF}</ProjectGuid>
+    <ProjectGuid>{E3372DEB-D4DE-4523-8F63-F6B5757F1B74}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>semana1</RootNamespace>
-    <AssemblyName>semana1</AssemblyName>
+    <RootNamespace>ProyectoSemana1</RootNamespace>
+    <AssemblyName>ProyectoSemana1</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
