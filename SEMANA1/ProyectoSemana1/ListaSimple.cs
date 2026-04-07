@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,86 +11,71 @@ namespace ProyectoSemana1
     {
         Nodo raiz, nuevo, aux, ptr; // ptr = pointer = puntero = direccion direccion = numero
 
-        // Método Constructor
-        public ListaSimple() { raiz = null; }
-
-        // Método InsertarLIFO
-        public void InsertarLIFO(int dato)
-        {
-            nuevo = new Nodo();
-            nuevo.info = dato;
-            if (raiz == null)
-            {
-                nuevo.sig = null; raiz = nuevo;
-            }
-            else
-            {
-                nuevo.sig = raiz; raiz = nuevo;
-            }
-        }
-        // Método InsertarFIFO
         public void InsertarFIFO(int dato)
         {
             nuevo = new Nodo();
             nuevo.info = dato;
-            if (raiz == null)
-            {
-                nuevo.sig = null; raiz = aux = nuevo;
-            }
-            else
-            {
-                aux.sig = nuevo; nuevo.sig = null; aux = nuevo;
-            }
+
+            if (raiz == null) { nuevo.sig = null; raiz = aux = nuevo; }
+            else { nuevo.sig = null; aux.sig = nuevo; aux = nuevo; }
         }
 
-        // Método Recorrido
+        public void InsertarLIFO(int dato)
+        {
+            nuevo = new Nodo();
+            nuevo.info = dato;
+
+            if (raiz == null) { nuevo.sig = null; raiz = nuevo; }
+            else { nuevo.sig = raiz; raiz = nuevo; }
+        }
+
+        
         public void Recorrido()
         {
             ptr = raiz;
-            while(ptr != null)
+
+            while (ptr != null)
             {
-                Console.Write("{0},", ptr.info);
+                Console.Write(ptr.info + ",");
                 ptr = ptr.sig;
             }
         }
 
-        // Método Buscar
-        public int Buscar(int dato)
-        {   int resultado = 0;
-            ptr = raiz;
-            while(ptr != null)
-            {
-                if(ptr.info == dato)
-                {
-                    resultado = 1; break;
-                }
-                ptr = ptr.sig;
-            }
-            return resultado;
-        }
-
-        // Método Eliminar
         public void Eliminar(int dato)
-        {   bool resultado = false;
-            if (raiz.info == dato)
-            {
-                resultado = true; raiz = raiz.sig;
-            }
+        {
+            if (raiz == null) { Console.WriteLine("LISTA VACIA"); }
+            else if (raiz.info == dato) { raiz = raiz.sig; }
             else
             {
-                ptr = aux = raiz;
-                while (ptr != null)
+                aux = ptr = raiz;
+                while (aux != null)
                 {
-                    if (ptr.info == dato)
+                    if (aux.info == dato)
                     {
-                        resultado = true; aux.sig = ptr.sig;
-                        break;
+                        ptr.sig = aux.sig;
+                        aux = null;
                     }
-                    aux = ptr; ptr = ptr.sig;
+                    else
+                    {
+                        ptr = aux;
+                        aux = aux.sig;
+                    }
                 }
             }
-            Console.WriteLine("{0} ELIMINADO", resultado ? "SI" : "NO");
-            Recorrido();
+        
+        }
+
+        public bool Buscar(int dato)
+        {
+            bool resultado = false;
+            ptr = raiz;
+
+            while (ptr != null)
+            {
+                if (ptr.info == dato){ resultado = true; ptr = null; }
+                else { ptr = ptr.sig; }
+            }
+            return resultado;
         }
 
         // Método Ordenar
@@ -99,8 +85,10 @@ namespace ProyectoSemana1
             while (ptr != null)
             {
                 aux = raiz;
-                while(aux != null)
-                {   if(ptr.info > aux.info){
+                while (aux != null)
+                {
+                    if (ptr.info > aux.info)
+                    {
                         int temp = ptr.info;
                         ptr.info = aux.info;
                         aux.info = temp;

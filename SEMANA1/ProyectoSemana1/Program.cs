@@ -11,28 +11,33 @@ namespace ProyectoSemana1
         static void Main(string[] args)
         {
             ListaSimple lista = new ListaSimple();
-            // Añadir 5 elementos
-            lista.InsertarLIFO(50);
-            lista.InsertarLIFO(20);
-            lista.InsertarLIFO(80);
-            lista.InsertarLIFO(10);
-            lista.InsertarLIFO(90);
+            // Insertar 10 elementos aleatorios
+            Random rnd = new Random();
+
+            for (int i = 1; i <= 5; i++)
+            {
+                int valor = rnd.Next(10, 150);
+                lista.InsertarFIFO(valor);
+                Console.Write("{0}: {1}", i, valor);
+                Console.Write(" ");
+            }
+             
             // Listar los elementos
-            Console.WriteLine("--- LISTADO DE ELEMENTOS ---");
+            Console.WriteLine("\n--- LISTADO DE ELEMENTOS ---");
             lista.Recorrido();
             // Ordenar los elementos
             lista.Ordenar();
             // Listar los elementos
-            Console.WriteLine("--- LISTADO DE ELEMENTOS ---");
+            Console.WriteLine("\n--- LISTADO DE ELEMENTOS ---");
             lista.Recorrido();
-            // Buscar elemento
+            //Buscar elemento
             int dato;
             do
             {
                 Console.Write("\nDATO A BUSCAR (-1 FIN):");
                 dato = Int32.Parse(Console.ReadLine());
                 Console.WriteLine("{0} {1} ENCONTRADO", dato,
-                    lista.Buscar(dato) == 1 ? "SI" : "NO");
+                    lista.Buscar(dato) ? "SI" : "NO");
             } while (dato != -1);
             // Eliminar elemento
             do
@@ -40,8 +45,9 @@ namespace ProyectoSemana1
                 Console.Write("\nDATO A ELIMINAR (-1 FIN):");
                 dato = Int32.Parse(Console.ReadLine());
                 lista.Eliminar(dato);
+                lista.Recorrido();
             } while (dato != -1);
-
+            
             Console.ReadLine();
         }
     }
