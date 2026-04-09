@@ -10,34 +10,42 @@ namespace ProyectoSemana2
     {
         static void Main(string[] args)
         {
-            Random rnd = new Random();
-            ListaDoble miLista = new ListaDoble();
-            for(int i = 0; i < 10; i++)
-                miLista.InsertarLIFO(rnd.Next(10,100));
-            miLista.Recorrido();
-            miLista.Ordenar();
-            miLista.Recorrido();
-            // Búsqueda
-            int dato;
-            do
-            {
-                Console.WriteLine("\nDATO A BUSCAR (-1 SALIR):");
-                dato = Int32.Parse(Console.ReadLine());               
-                Console.WriteLine("DATO {0} {1} EXISTE", dato,
-                    miLista.Buscar(dato) ? "SI" : "NO");
-            } while (dato != -1);
-            
-            // Eliminación
-            do
-            {
-                Console.WriteLine("\nDATO A ELIMINAR (-1 SALIR):");
-                dato = Int32.Parse(Console.ReadLine());
-                Console.WriteLine("DATO {0} {1} ELIMINADO", dato,
-                    miLista.Eliminar(dato) ? "SI" : "NO");
-                miLista.Recorrido();
-            } while (dato != -1);
+            ListaDobleCircular miLista = new ListaDobleCircular();
 
-            Console.ReadLine();
+            Random rnd = new Random();
+
+            for(int i = 1; i <= 5; i++)
+            {
+                int valor = rnd.Next(10, 100);
+                Console.Write("{0}: {1}", i, valor);
+                Console.Write(" ");
+                miLista.InsertarFIFO(valor);
+            }
+            Console.WriteLine("");
+            miLista.Recorrido();
+            //miLista.Ordenar();
+            //miLista.Recorrido();
+            //// Búsqueda
+            //int dato;
+            //do
+            //{
+            //    Console.WriteLine("\nDATO A BUSCAR (-1 SALIR):");
+            //    dato = Int32.Parse(Console.ReadLine());               
+            //    Console.WriteLine("DATO {0} {1} EXISTE", dato,
+            //        miLista.Buscar(dato) ? "SI" : "NO");
+            //} while (dato != -1);
+            
+            //// Eliminación
+            //do
+            //{
+            //    Console.WriteLine("\nDATO A ELIMINAR (-1 SALIR):");
+            //    dato = Int32.Parse(Console.ReadLine());
+            //    Console.WriteLine("DATO {0} {1} ELIMINADO", dato,
+            //        miLista.Eliminar(dato) ? "SI" : "NO");
+            //    miLista.Recorrido();
+            //} while (dato != -1);
+
+            Console.WriteLine("\n-----TERMINO-----");
         }
     }
 }
