@@ -10,14 +10,15 @@ namespace ProyectoSemana1
     {
         static void Main(string[] args)
         {
-            ListaSimple lista = new ListaSimple();
+            //ListaSimple lista = new ListaSimple();
+            ListaSimpleCircular lista = new ListaSimpleCircular();
             // Insertar 10 elementos aleatorios
             Random rnd = new Random();
 
             for (int i = 1; i <= 5; i++)
             {
                 int valor = rnd.Next(10, 150);
-                lista.InsertarFIFO(valor);
+                lista.InsertarLIFO(valor);
                 Console.Write("{0}: {1}", i, valor);
                 Console.Write(" ");
             }
@@ -25,11 +26,11 @@ namespace ProyectoSemana1
             // Listar los elementos
             Console.WriteLine("\n--- LISTADO DE ELEMENTOS ---");
             lista.Recorrido();
-            // Ordenar los elementos
-            lista.Ordenar();
+            //// Ordenar los elementos
+            //lista.Ordenar();
             // Listar los elementos
-            Console.WriteLine("\n--- LISTADO DE ELEMENTOS ---");
-            lista.Recorrido();
+            //Console.WriteLine("\n--- LISTADO DE ELEMENTOS ---");
+            //lista.Recorrido();
             //Buscar elemento
             int dato;
             do
@@ -47,7 +48,7 @@ namespace ProyectoSemana1
                 lista.Eliminar(dato);
                 lista.Recorrido();
             } while (dato != -1);
-            
+
             Console.ReadLine();
         }
     }

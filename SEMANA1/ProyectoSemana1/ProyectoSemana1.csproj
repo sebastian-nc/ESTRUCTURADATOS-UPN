@@ -44,7 +44,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ListaSimple.cs" />
+    <Compile Include="ListaSimpleCircular.cs" />
     <Compile Include="Nodo.cs" />
+    <Compile Include="NodoCircular.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
